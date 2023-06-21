@@ -73,7 +73,8 @@ function iniciarApp() {
 
       recetaContenedor.appendChild(recetaCard);
 
-
+      // metemos todo el codigo generado, dentro del div de resultado que ya teniamos creado en el HTML
+      resultado.appendChild(recetaContenedor);
 
     })
   }
