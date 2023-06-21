@@ -38,6 +38,8 @@ function iniciarApp() {
 
   function mostrarRecetas(recetas = []) {
 
+    limpiarHtml(resultado);
+
     // iterar en los resultados
     recetas.forEach(receta => {
       const { idMeal, strMeal, strMealThumb } = receta;
@@ -68,7 +70,7 @@ function iniciarApp() {
       recetaCardBody.appendChild(recetaHeading);
       recetaCardBody.appendChild(recetaButton);
 
-      recetaCardBody.appendChild(recetaImagen);
+      recetaCard.appendChild(recetaImagen);
       recetaCard.appendChild(recetaCardBody);
 
       recetaContenedor.appendChild(recetaCard);
@@ -77,6 +79,12 @@ function iniciarApp() {
       resultado.appendChild(recetaContenedor);
 
     })
+  }
+
+  function limpiarHtml(selector) {
+    while (selector.firstChild) {
+      selector.removeChild(selector.firstChild);
+    }
   }
 
 }
