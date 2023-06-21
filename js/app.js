@@ -70,8 +70,12 @@ function iniciarApp() {
       const recetaButton = document.createElement('BUTTON');
       recetaButton.classList.add('btn', 'btn-danger', 'w-100');
       recetaButton.textContent = 'Ver receta';
-      recetaButton.dataset.bsTarget = "#modal";//conectamos con el modal del html
-      recetaButton.dataset.bsToggle = "modal";
+      // recetaButton.dataset.bsTarget = "#modal";//conectamos con el modal del html
+      // recetaButton.dataset.bsToggle = "modal";
+
+      recetaButton.onclick = function () {
+        seleccionarReceta(idMeal);
+      }
 
       // Inyectamos el codigo generado al HTML
       recetaCardBody.appendChild(recetaHeading);
@@ -86,6 +90,17 @@ function iniciarApp() {
       resultado.appendChild(recetaContenedor);
 
     })
+  }
+
+  function seleccionarReceta(id) {
+    const url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    fetch(url)
+      .then(respuesta => respuesta.json())
+      .then(resultado => mostrarRecetaModal(resultado.meals[0]))
+  }
+
+  function mostrarRecetaModal(receta) {
+    console.log(receta);
   }
 
   function limpiarHtml(selector) {
