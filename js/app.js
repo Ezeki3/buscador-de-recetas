@@ -31,8 +31,17 @@ function iniciarApp() {
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoria}`;
     fetch(url)
       .then(respuesta => respuesta.json())
-      .then(resultado => console.log(resultado))
+      .then(resultado => mostrarRecetas(resultado.meals))
+  }
 
+  function mostrarRecetas(recetas = []) {
+
+    // iterar en los resultados
+    recetas.forEach(receta => {
+      const recetaContenedor = document.createElement('DIV');
+      recetaContenedor.classList.add('col-md-4');
+      console.log(recetaContenedor);
+    })
   }
 
 }
