@@ -115,6 +115,17 @@ function iniciarApp() {
       <p>${strInstructions}</p>
     `;
 
+    // Mostramos cantidades e ingredientes
+    // ITERAMOS SOBRE CADA UNO DE SUS ELEMENTOS
+    for (let i = 1; i <= 20; i++) {
+      if (receta[`strIngredient${i}`]) {
+        const ingrediente = receta[`strIngredient${i}`];
+        const cantidad = receta[`strMeasure${i}`];
+        console.log(`${ingrediente} - ${cantidad}`);
+      }
+
+    }
+
     // Mostrar el modal
     modal.show()
   }
