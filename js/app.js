@@ -109,6 +109,11 @@ function iniciarApp() {
     const modalBody = document.querySelector('.modal .modal-body');
 
     modalTitle.textContent = strMeal;
+    modalBody.innerHTML = `
+      <img class="img-fluid" src="${strMealThumb}" alt="receta ${strMeal}" />
+      <h3 class="my-3">Instrucciones</h3>
+      <p>${strInstructions}</p>
+    `;
 
     // Mostrar el modal
     modal.show()
