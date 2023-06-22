@@ -4,6 +4,7 @@ function iniciarApp() {
   selectCategorias.addEventListener('change', seleccionarCategorias);
 
   const resultado = document.querySelector('#resultado');
+  const modal = new bootstrap.Modal('#modal', {});
 
   obtenerCategorias();
 
@@ -100,7 +101,17 @@ function iniciarApp() {
   }
 
   function mostrarRecetaModal(receta) {
-    console.log(receta);
+
+    const { idMeal, strInstructions, strMeal, strMealThumb } = receta;
+
+    // Añadimos el contenido al modal
+    const modalTitle = document.querySelector('.modal .modal-title');
+    const modalBody = document.querySelector('.modal .modal-body');
+
+    modalTitle.textContent = strMeal;
+
+    // Mostrar el modal
+    modal.show()
   }
 
   function limpiarHtml(selector) {
