@@ -135,6 +135,21 @@ function iniciarApp() {
     }
     modalBody.append(listGroup);
 
+    const modalFooter = document.querySelector('.modal-footer');
+    limpiarHtml(modalFooter); //limpiamos antes de que se generen mas elementos
+
+    // Botones de favoritos y cerrar
+    const btnFavorito = document.createElement('BUTTON');
+    btnFavorito.classList.add('btn', 'btn-danger', 'col');
+    btnFavorito.textContent = 'Guardar Favorito';
+    
+    const btnCerrarModal = document.createElement('BUTTON');
+    btnCerrarModal.classList.add('btn', 'btn-secondary', 'col');
+    btnCerrarModal.textContent = 'Cerrar';
+
+    modalFooter.appendChild(btnFavorito);
+    modalFooter.appendChild(btnCerrarModal);
+
     // Mostrar el modal
     modal.show()
   }
