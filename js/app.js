@@ -140,7 +140,7 @@ function iniciarApp() {
 
     // Botones de favoritos y cerrar
     const btnFavorito = document.createElement('BUTTON');
-    btnFavorito.classList.add('btn', 'btn-danger', 'col');
+    btnFavorito.classList.add('btn', 'btn-danger',  'col');
     btnFavorito.textContent = existeStorage(idMeal) ? 'Eliminar Favorito' : 'Guardar Favorito';
     
     // localStorage
@@ -148,6 +148,7 @@ function iniciarApp() {
 
       if (existeStorage(idMeal)) {
         eliminarFavoritos(idMeal)
+        btnFavorito.textContent = 'Guardar Favorito';
         // si ya existe el id con el return, impedimos que se siga ejecutando el demas codigo
         return
       }
@@ -158,6 +159,7 @@ function iniciarApp() {
         title: strMeal,
         img: strMealThumb,
       })
+      btnFavorito.textContent = 'Eliminar Favorito';
     }
 
 
