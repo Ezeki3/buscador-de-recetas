@@ -168,8 +168,15 @@ function iniciarApp() {
   }
 
   function agregarFavorito(receta){
+    // asigna un elemento y guardalo en favoritos y si no existe guarda un arreglo vacio
     const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
     localStorage.setItem('favoritos', JSON.stringify([...favoritos, receta]));
+
+  }
+
+  function existeStorage(id){
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+
   }
 
   function limpiarHtml(selector) {
