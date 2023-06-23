@@ -141,12 +141,13 @@ function iniciarApp() {
     // Botones de favoritos y cerrar
     const btnFavorito = document.createElement('BUTTON');
     btnFavorito.classList.add('btn', 'btn-danger', 'col');
-    btnFavorito.textContent = 'Guardar Favorito';
+    btnFavorito.textContent = existeStorage(idMeal) ? 'Eliminar Favorito' : 'Guardar Favorito';
     
     // localStorage
     btnFavorito.onclick = function(){
 
       if (existeStorage(idMeal)) {
+        eliminarFavoritos(idMeal)
         // si ya existe el id con el return, impedimos que se siga ejecutando el demas codigo
         return
       }
@@ -178,7 +179,12 @@ function iniciarApp() {
     // asigna un elemento y guardalo en favoritos y si no existe guarda un arreglo vacio
     const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
     localStorage.setItem('favoritos', JSON.stringify([...favoritos, receta]));
+  }
 
+  function eliminarFavoritos(id){
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+    const nuevosFavoritos = favoritos.filter(favorito => favorito.id !== id);
+    localStorage.setItem('favoritos',JSON.stringify(nuevosFavoritos));
   }
 
   function existeStorage(id){
