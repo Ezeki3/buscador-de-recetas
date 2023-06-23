@@ -42,7 +42,7 @@ function iniciarApp() {
     limpiarHtml(resultado);
 
     const heading = document.createElement('H2');
-    heading.classList.add('text-center', 'text-black', 'my-5');
+    heading.classList.add('text-center', 'text-black', 'my-3');
     heading.textContent = recetas.length ? 'Resultados' : 'No hay resultados';
     resultado.appendChild(heading);
 
@@ -143,6 +143,16 @@ function iniciarApp() {
     btnFavorito.classList.add('btn', 'btn-danger', 'col');
     btnFavorito.textContent = 'Guardar Favorito';
     
+    // localStorage
+    btnFavorito.onclick = function(){
+      agregarFavorito({
+        id: idMeal,
+        title: strMeal,
+        img: strMealThumb,
+      })
+    }
+
+
     const btnCerrarModal = document.createElement('BUTTON');
     btnCerrarModal.classList.add('btn', 'btn-secondary', 'col');
     btnCerrarModal.textContent = 'Cerrar';
@@ -155,6 +165,11 @@ function iniciarApp() {
 
     // Mostrar el modal
     modal.show()
+  }
+
+  function agregarFavorito(receta){
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+    localStorage.setItem('favoritos', JSON.stringify([...favoritos, receta]));
   }
 
   function limpiarHtml(selector) {
