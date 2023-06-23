@@ -146,6 +146,9 @@ function iniciarApp() {
     const btnCerrarModal = document.createElement('BUTTON');
     btnCerrarModal.classList.add('btn', 'btn-secondary', 'col');
     btnCerrarModal.textContent = 'Cerrar';
+    btnCerrarModal.onclick = function() { //lo hacemos con el callback para esperar a que ocurra el evento
+      modal.hide();
+    }
 
     modalFooter.appendChild(btnFavorito);
     modalFooter.appendChild(btnCerrarModal);
