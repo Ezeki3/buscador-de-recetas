@@ -150,6 +150,7 @@ function iniciarApp() {
         eliminarFavoritos(idMeal)
         btnFavorito.textContent = 'Guardar Favorito';
         // si ya existe el id con el return, impedimos que se siga ejecutando el demas codigo
+        mostrarToast('Eliminado correctamente!')
         return
       }
 
@@ -160,6 +161,7 @@ function iniciarApp() {
         img: strMealThumb,
       })
       btnFavorito.textContent = 'Eliminar Favorito';
+      mostrarToast('Guardado Correctamente!');
     }
 
 
@@ -192,6 +194,14 @@ function iniciarApp() {
   function existeStorage(id){
     const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
     return favoritos.some(favorito => favorito.id === id);
+  }
+
+  function mostrarToast(mensaje){
+    const toastDiv = document.querySelector('#toast');
+    const toastBody = document.querySelector('.toast-body');
+    const toast = new bootstrap.Toast(toastDiv);
+    toastBody.textContent = mensaje;
+    toast.show();
   }
 
   function limpiarHtml(selector) {
