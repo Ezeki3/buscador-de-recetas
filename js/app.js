@@ -6,6 +6,12 @@ function iniciarApp() {
     selectCategorias.addEventListener('change', seleccionarCategorias);
     obtenerCategorias();
   }
+  
+  const favoritosDiv = document.querySelector('.favoritos');
+  if (favoritosDiv) {
+    obtenerFavoritos();
+  }
+
   const resultado = document.querySelector('#resultado');
   const modal = new bootstrap.Modal('#modal', {});
 
@@ -203,6 +209,18 @@ function iniciarApp() {
     const toast = new bootstrap.Toast(toastDiv);
     toastBody.textContent = mensaje;
     toast.show();
+  }
+
+  function obtenerFavoritos(){
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+    if (favoritos.length) {
+      return
+    }
+
+    const noFavoritos = document.createElement('P');
+    noFavoritos.textContent = 'No hay favoritos aún...';
+    noFavoritos.classList.add('fs-4', 'text-center', 'font-bold', 'mt-3');
+    favoritosDiv.appendChild(noFavoritos);
   }
 
   function limpiarHtml(selector) {
