@@ -1,12 +1,13 @@
 function iniciarApp() {
 
   const selectCategorias = document.querySelector('#categorias');
-  selectCategorias.addEventListener('change', seleccionarCategorias);
 
+  if (selectCategorias) {
+    selectCategorias.addEventListener('change', seleccionarCategorias);
+    obtenerCategorias();
+  }
   const resultado = document.querySelector('#resultado');
   const modal = new bootstrap.Modal('#modal', {});
-
-  obtenerCategorias();
 
   function obtenerCategorias() {
     const url = 'https://www.themealdb.com/api/json/v1/1/categories.php';
